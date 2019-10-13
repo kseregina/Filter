@@ -63,7 +63,7 @@
             Найдено {{productsCountString}}
         </div>
         <div class="row no-gutters">
-            <div class="col-6 pl-2" v-for="product in products">
+            <div class="col-6" :class="{ 'pr-2': i % 2 == 0, 'pl-2': i % 2 != 0 }" v-for="(product, i) in products">
                 <div class="card text-center border-0 shadow-sm mb-3 bg-white rounded-lg">
                     <img class="card-img-top"
                         src="https://media.istockphoto.com/photos/red-womans-sports-jacket-picture-id520887025">
