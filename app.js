@@ -43,3 +43,10 @@ const products = [
         color: 'зеленый'
     }
 ];
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        products: products
+    }
+});
