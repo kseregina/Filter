@@ -54,6 +54,9 @@ var app = new Vue({
         color: ''
     },
     computed: {
+        hasAnyFilter: function () {
+            return this.brand || this.size || this.color;
+        },
         filteredProducts: function () {
             const result = [];
 
@@ -71,6 +74,11 @@ var app = new Vue({
         }
     },
     methods: {
+        resetFilter() {
+            this.brand = '';
+            this.size = '';
+            this.color = '';
+        },
         addToCart(product) {
             alert('куплен товар ' + product.name);
         },
