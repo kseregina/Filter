@@ -53,5 +53,10 @@ var app = new Vue({
         productsCountString: function () {
             return this.products.length + ' товаров'; // TODO менять окончание в зависимости от числа товаров
         }
+    },
+    methods: {
+        addToCart(product) {
+            alert('куплен товар ' + product.name);
+        }
     }
 });
