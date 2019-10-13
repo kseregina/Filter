@@ -48,5 +48,10 @@ var app = new Vue({
     el: '#app',
     data: {
         products: products
+    },
+    computed: {
+        productsCountString: function () {
+            return this.products.length + ' товаров'; // TODO менять окончание в зависимости от числа товаров
+        }
     }
 });
