@@ -47,7 +47,8 @@ const products = [
 var app = new Vue({
     el: '#app',
     data: {
-        products: products
+        products: products,
+        expandedProductIds: []
     },
     computed: {
         productsCountString: function () {
@@ -57,6 +58,17 @@ var app = new Vue({
     methods: {
         addToCart(product) {
             alert('куплен товар ' + product.name);
+        },
+        toggleProductExpanded(product) {
+            let productIndex = this.expandedProductIds.indexOf(product.id);
+            if (productIndex >= 0) {
+                this.expandedProductIds.splice(productIndex, 1);
+            } else {
+                this.expandedProductIds.push(product.id);
+            }
+        },
+        isProductExpanded(product) {
+            return this.expandedProductIds.indexOf(product.id) >= 0;
         }
     }
 });
