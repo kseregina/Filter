@@ -48,11 +48,26 @@ var app = new Vue({
     el: '#app',
     data: {
         products: products,
-        expandedProductIds: []
+        expandedProductIds: [],
+        brand: '',
+        size: '',
+        color: ''
     },
     computed: {
-        productsCountString: function () {
-            return this.products.length + ' товаров'; // TODO менять окончание в зависимости от числа товаров
+        filteredProducts: function () {
+            const result = [];
+
+            for (i in this.products) {
+                const product = this.products[i];
+
+                if (this.brand && product.brand != this.brand) continue;
+                if (this.size && product.size != this.size) continue;
+                if (this.color && product.color != this.color) continue;
+
+                result.push(product);
+            }
+
+            return result;
         }
     },
     methods: {
@@ -60,7 +75,7 @@ var app = new Vue({
             alert('куплен товар ' + product.name);
         },
         toggleProductExpanded(product) {
-            let productIndex = this.expandedProductIds.indexOf(product.id);
+            const productIndex = this.expandedProductIds.indexOf(product.id);
             if (productIndex >= 0) {
                 this.expandedProductIds.splice(productIndex, 1);
             } else {
